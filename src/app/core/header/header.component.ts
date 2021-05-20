@@ -16,7 +16,7 @@ export class HeaderComponent implements OnInit, OnDestroy {
 
   ngOnInit(): void {
     this.languageSubscription = this.languageSelector.valueChanges
-      .subscribe(this.translateService.use.bind(this));
+      .subscribe(language => this.translateService.use(language));
   }
 
   ngOnDestroy(): void {
