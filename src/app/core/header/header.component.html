@@ -1,0 +1,19 @@
+<header>
+  <div class="header pt-1">
+    <div class="header__logo__container">
+      <img class="header__logo mr-1" src="assets/breaking-bad-logo-little.png" alt="breaking bad logo">
+      <div class="header__title__container">
+        <p class="header__title mb-3">Breaking &nbsp;</p>
+        <p class="header__title ml-3">Chars</p>
+      </div>
+    </div>
+
+    <mat-form-field>
+      <mat-label translate> chooseLanguage </mat-label>
+      <mat-select [formControl]="languageSelector">
+        <mat-option value="es">Español</mat-option>
+        <mat-option value="en">English</mat-option>
+      </mat-select>
+    </mat-form-field>
+  </div>
+</header>
