@@ -14,6 +14,8 @@ import { LayoutComponent } from './layout/layout.component';
 import { HeaderComponent } from './header/header.component';
 import { FooterComponent } from './footer/footer.component';
 
+import { StickyDirective } from './sticky.directive';
+
 export function createTranslateLoader(http: HttpClient) {
   return new TranslateHttpLoader(http, './assets/i18n/', '.json');
 }
@@ -22,7 +24,8 @@ export function createTranslateLoader(http: HttpClient) {
   declarations: [
     HeaderComponent,
     FooterComponent,
-    LayoutComponent
+    LayoutComponent,
+    StickyDirective
   ],
   imports: [
     CommonModule,

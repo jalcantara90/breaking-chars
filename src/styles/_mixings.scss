@@ -1,0 +1,5 @@
+@mixin first-letter-bb {
+  &::first-letter {
+    color: var(--bb-brand);
+  }
+}
