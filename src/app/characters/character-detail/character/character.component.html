@@ -1,10 +1,37 @@
 <div class="character">
   <button
+    class="mb-3"
     [routerLink]="['/']"
     mat-raised-button>
     <mat-icon aria-hidden="false" aria-label="come back icon">arrow_back</mat-icon>
     {{'returnToCharacters' | translate}}
   </button>
 
-  {{ character$ | async | json }}
+  <ng-container *ngIf="character$ | async as character">
+    <div class="character-grid" *ngIf="character?.char_id; else loadingCharacter">
+      <img loading="lazy"
+        class="character-grid__image"
+        [src]="character.img"
+        alt="{{ character.name + '' + ( 'character.image' | translate )}}"/>
+      <ng-container *ngIf="characterQuote$ | async as quote">
+        <bc-character-info
+          [character]="character"
+          [quote]="quote">
+        </bc-character-info>
+      </ng-container>
+    </div>
+  </ng-container>
 </div>
+
+<ng-template #loadingCharacter>
+  <div class="character-grid">
+    <div class="character__image__placeholder"></div>
+    <div class="character__info__placeholder">
+      <div class="character__info__placeholder__line mb-3"></div>
+      <div class="character__info__placeholder__line mb-3"></div>
+      <div class="character__info__placeholder__line mb-3"></div>
+      <div class="character__info__placeholder__line mb-3"></div>
+      <div class="character__info__placeholder__line character__info__placeholder__line--bigger"></div>
+    </div>
+  </div>
+</ng-template>

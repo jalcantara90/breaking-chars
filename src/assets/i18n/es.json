@@ -1,5 +1,12 @@
 {
   "chooseLanguage": "Elige idioma",
   "author": "Autor",
-  "returnToCharacters": "Volver a personajes"
+  "returnToCharacters": "Volver a personajes",
+  "character.name": "Nombre",
+  "character.image": "Imagen",
+  "character.nickname": "Apodo",
+  "character.birthday": "Fecha de nacimiento",
+  "character.occupation": "Profesión",
+  "character.status": "Estado",
+  "character.hasNotQuotes": "No tiene frases célebres"
 }

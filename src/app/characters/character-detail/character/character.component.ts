@@ -1,9 +1,11 @@
-import { Observable } from 'rxjs';
+import { map } from 'rxjs/operators';
+import { Status, statusColor } from './../../models/character.model';
+import { combineLatest, Observable } from 'rxjs';
 import { CharactersFacadeService } from './../../+state/character-facade.service';
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { Character } from '../../models/character.model';
-import { switchMap, tap } from 'rxjs/operators';
+import { Character, StatusType } from '../../models/character.model';
+import { filter, startWith, switchMap, tap } from 'rxjs/operators';
 
 @Component({
   selector: 'bc-character',
@@ -13,11 +15,13 @@ import { switchMap, tap } from 'rxjs/operators';
 export class CharacterComponent implements OnInit {
 
   character$!: Observable<Character>;
+  characterQuote$!: Observable<string>;
+  isLoading$!: Observable<boolean>;
 
   constructor(private router: ActivatedRoute, private charactersFacadeService: CharactersFacadeService) { }
 
   ngOnInit(): void {
-    this.character$ =  this.router.params.pipe(
+    this.character$ = this.router.params.pipe(
       switchMap(({id}) =>
         this.charactersFacadeService.getCharacter(id).pipe(
           tap(character => {
@@ -26,8 +30,12 @@ export class CharacterComponent implements OnInit {
             }
           })
         )
-      ),
+      )
+    );
+
+    this.characterQuote$ = this.character$.pipe(
+      filter(character => !!character?.name),
+      switchMap(character => this.charactersFacadeService.getCharacterQuote(character.name))
     );
   }
-
 }

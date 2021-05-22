@@ -7,17 +7,21 @@ import { MatButtonModule } from '@angular/material/button';
 
 import { CharacterDetailRoutingModule } from './character-detail-routing.module';
 import { CharacterComponent } from './character/character.component';
+import {MatChipsModule} from '@angular/material/chips';
+import { CharacterInfoComponent } from './character-info/character-info.component';
 
 @NgModule({
   declarations: [
-    CharacterComponent
+    CharacterComponent,
+    CharacterInfoComponent
   ],
   imports: [
     CommonModule,
     CharacterDetailRoutingModule,
     MatButtonModule,
     MatIconModule,
-    TranslateModule
+    TranslateModule,
+    MatChipsModule
   ]
 })
 export class CharacterDetailModule { }
