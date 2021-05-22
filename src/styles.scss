@@ -5,3 +5,12 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
 
 @import './styles/_utility';
 @import './styles/variables';
+
+@keyframes loading {
+  from {
+    left: -150px;
+  }
+  to   {
+    left: 100%;
+  }
+}

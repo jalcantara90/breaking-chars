@@ -2,8 +2,8 @@
 
 .character-card {
   flex: auto;
-  height: 25rem;
-  border-radius: .5rem;
+  height: var(--character-card-height);
+  border-radius: var(--border-radius);
   position: relative;
   overflow: hidden;
   cursor: pointer;

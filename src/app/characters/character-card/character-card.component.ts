@@ -1,5 +1,6 @@
 import { Character } from './../models/character.model';
 import { Component, Input, OnInit } from '@angular/core';
+import * as AppRoutes from '@shared/routes';
 
 @Component({
   selector: 'bc-character-card',
@@ -7,7 +8,8 @@ import { Component, Input, OnInit } from '@angular/core';
   styleUrls: ['./character-card.component.scss']
 })
 export class CharacterCardComponent implements OnInit {
-  @Input() character: Character = {} as Character;
+  public readonly characterSegment = `/${AppRoutes.CHARACTER}`;
+  @Input() character!: Character;
 
   constructor() { }
 

@@ -18,12 +18,26 @@ export enum Category {
   BreakingBadBetterCallSaul = 'Breaking Bad, Better Call Saul',
 }
 
+export interface Quote {
+  quote_id: number;
+  quote: string;
+  author: string;
+  series: string;
+}
+
 export enum Status {
   Alive = 'Alive',
   Deceased = 'Deceased',
   PresumedDead = 'Presumed dead',
   Unknown = 'Unknown',
 }
+
+export const statusColor = new Map<StatusType, string | undefined>([
+  [Status.Alive, 'primary'],
+  [Status.PresumedDead, 'warn'],
+  [Status.Deceased, 'accent'],
+  [Status.Unknown, undefined]
+]);
 
 export type StatusType = `${Status}`;
 

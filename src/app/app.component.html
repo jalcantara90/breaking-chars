@@ -1,4 +1,6 @@
 
 <bc-layout>
-  <router-outlet></router-outlet>
+  <div [@routeAnimation]="routing(outlet)">
+    <router-outlet #outlet="outlet"></router-outlet>
+  </div>
 </bc-layout>

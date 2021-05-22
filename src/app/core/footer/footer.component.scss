@@ -1,5 +1,11 @@
-.footer__container {
-  display: flex;
-  justify-content: flex-end;
-  align-items: center;
+footer {
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+
+  .footer__container {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+  }
 }

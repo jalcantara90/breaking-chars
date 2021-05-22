@@ -1,6 +1,7 @@
-import { Character } from './models/character.model';
+import { map } from 'rxjs/operators';
+import { Character, Quote } from './models/character.model';
 import { environment } from '@environment/environment';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 
 @Injectable({
@@ -13,5 +14,23 @@ export class CharactersService {
 
   getCharacters() {
     return this.http.get<Character[]>(`${this.baseUrl}/characters`);
+  }
+
+  getCharacterById(characterId: number) {
+    return this.http.get<Character[]>(`${this.baseUrl}/characters/${characterId}`).pipe(
+      map(characterList => characterList[0])
+    );
+  }
+
+  getCharacterQuote(characterName: string) {
+    const params = new HttpParams({
+      fromObject: {
+        author: characterName
+      }
+    });
+
+    return this.http.get<Quote[]>(`${this.baseUrl}/quote/random`, { params }).pipe(
+      map(quoteList => quoteList[0]?.quote ?? 'character.hasNotQuotes')
+    );
   }
 }
