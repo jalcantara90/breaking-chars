@@ -1,0 +1,10 @@
+<div class="character">
+  <button
+    [routerLink]="['/']"
+    mat-raised-button>
+    <mat-icon aria-hidden="false" aria-label="come back icon">arrow_back</mat-icon>
+    {{'returnToCharacters' | translate}}
+  </button>
+
+  {{ character$ | async | json }}
+</div>

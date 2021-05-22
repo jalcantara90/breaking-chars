@@ -1,3 +1,6 @@
+import { CharactersEffects } from './+state/characters.effects';
+import { EffectsModule } from '@ngrx/effects';
+import { StoreModule } from '@ngrx/store';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
@@ -8,6 +11,8 @@ import { CharacterCardComponent } from './character-card/character-card.componen
 import {MatCardModule} from '@angular/material/card';
 import {ScrollingModule} from '@angular/cdk/scrolling';
 import { CharactersCardSkeletonComponent } from './characters-card-skeleton/characters-card-skeleton.component';
+import * as FromCharacter from './+state/characters.reducer';
+import { CharactersFacadeService } from './+state/character-facade.service';
 
 @NgModule({
   declarations: [
@@ -19,7 +24,12 @@ import { CharactersCardSkeletonComponent } from './characters-card-skeleton/char
     CommonModule,
     CharactersRoutingModule,
     MatCardModule,
-    ScrollingModule
+    ScrollingModule,
+    StoreModule.forFeature(FromCharacter.charactersFeatureKey, FromCharacter.reducer),
+    EffectsModule.forFeature([CharactersEffects])
+  ],
+  providers: [
+    CharactersFacadeService
   ]
 })
 export class CharactersModule { }

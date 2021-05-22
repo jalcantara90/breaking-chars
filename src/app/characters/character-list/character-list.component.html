@@ -3,7 +3,7 @@
   *ngIf="characterList$ | async as characterList; else placeholdeList">
   <bc-character-card
     [character]="character"
-    *ngFor="let character of characterList">
+    *ngFor="let character of characterList; trackBy: trackById">
   </bc-character-card>
 </div>
 
