@@ -4,9 +4,10 @@
   "scripts": {
     "ng": "ng",
     "start": "ng serve",
-    "build": "ng build",
+    "build": "ng build --prod --base-href=/breaking-chars/",
     "watch": "ng build --watch --configuration development",
-    "test": "ng test"
+    "test": "ng test",
+    "test:prod": "ng test --browsers=ChromeHeadless --watch=false --code-coverage"
   },
   "private": true,
   "dependencies": {
@@ -35,9 +36,13 @@
     "@angular-devkit/build-angular": "~12.0.1",
     "@angular/cli": "~12.0.1",
     "@angular/compiler-cli": "~12.0.1",
+    "@ngneat/spectator": "^7.1.0",
     "@ngrx/schematics": "^12.0.0",
+    "@types/faker": "^5.5.5",
     "@types/jasmine": "~3.6.0",
+    "jasmine-marbles": "^0.8.1",
     "@types/node": "^12.11.1",
+    "faker": "^5.5.3",
     "jasmine-core": "~3.7.0",
     "karma": "~6.3.0",
     "karma-chrome-launcher": "~3.1.0",

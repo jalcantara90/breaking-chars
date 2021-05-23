@@ -15,7 +15,6 @@ export class CharactersFacadeService {
 
   readonly characterList$ = this.store.pipe(select(FromSelectors.getCharacters));
   readonly areLoaded$ = this.store.pipe(select(FromSelectors.areLoaded));
-  readonly isLoading$ = this.store.pipe(select(FromSelectors.isLoading));
 
   constructor(
     private store: Store<CharactersState>,

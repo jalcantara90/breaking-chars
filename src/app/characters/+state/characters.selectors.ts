@@ -27,8 +27,3 @@ export const areLoaded = createSelector(
   selectCharactersState,
   (state) => state.loaded
 );
-
-export const isLoading = createSelector(
-  selectCharactersState,
-  state => state.isLoading
-);
