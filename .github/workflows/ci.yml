@@ -3,9 +3,9 @@ name: Breaking
 on:
   pull_request:
     branches: [ main ]
-    
-jobs: 
-  build: 
+
+jobs:
+  build:
     runs-on: ubuntu-latest
     steps:
     - name: Checkout
@@ -22,7 +22,7 @@ jobs:
     - name: test
       run: |
         npm install
-        npm run-script test
+        npm run-script test:prod
     - name: Build
       run: |
         npm install

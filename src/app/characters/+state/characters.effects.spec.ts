@@ -53,7 +53,7 @@ describe('CharactersEffects', () => {
     expect(effects).toBeTruthy();
   });
 
-  describe('loadCharacters', () => {
+  describe('loadCharacters$', () => {
     it('should return loadCharactersSuccess action', () => {
       const characterList = [
         character1,
@@ -93,11 +93,10 @@ describe('CharactersEffects', () => {
     });
   });
 
-  describe('loadCharacterById', () => {
+  describe('loadCharacterById$', () => {
     it('should return loadCharacterByIdSuccess action', () => {
 
       characterService.getCharacterById.and.returnValue(of(character1));
-
       actions$ = hot('-a-|', {
         a: FromActions.loadCharacterById({ id: character1.char_id })
       });
@@ -110,7 +109,7 @@ describe('CharactersEffects', () => {
 
       expect(effects.loadCharacterById$).toBeObservable(expected$);
     });
-    it('should return loadCharacterByIdFailure10 action', () => {
+    it('should return loadCharacterByIdFailure action', () => {
       characterService.getCharacterById.and.returnValue(throwError({ message: ERROR_MESSAGE }));
 
       actions$ = hot('-a-|', {
