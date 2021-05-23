@@ -1,5 +1,6 @@
 import { Character } from '../models/character.model';
 import { createAction, props } from '@ngrx/store';
+import { ErrorAction } from '../models/error-action.interface';
 
 export const loadCharacters = createAction(
   '[Characters] Load Characters'
@@ -12,7 +13,7 @@ export const loadCharactersSuccess = createAction(
 
 export const loadCharactersFailure = createAction(
   '[Characters] Load Characters Failure',
-  props<{ error: string }>()
+  props<{ error: ErrorAction }>()
 );
 
 export const loadCharacterById = createAction(
@@ -27,5 +28,5 @@ export const loadCharacterByIdSuccess = createAction(
 
 export const loadCharacterByIdFailure = createAction(
   '[Characters details] Load Character By Id Failure',
-  props<{ error: string }>()
+  props<{ error: ErrorAction }>()
 );

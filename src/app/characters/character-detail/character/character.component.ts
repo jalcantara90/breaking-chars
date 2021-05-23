@@ -1,11 +1,10 @@
-import { map } from 'rxjs/operators';
-import { Status, statusColor } from './../../models/character.model';
-import { combineLatest, Observable } from 'rxjs';
+import { catchError } from 'rxjs/operators';
+import { Observable, of } from 'rxjs';
 import { CharactersFacadeService } from './../../+state/character-facade.service';
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { Character, StatusType } from '../../models/character.model';
-import { filter, startWith, switchMap, tap } from 'rxjs/operators';
+import { Character } from '../../models/character.model';
+import { filter, switchMap, tap } from 'rxjs/operators';
 
 @Component({
   selector: 'bc-character',
@@ -35,7 +34,8 @@ export class CharacterComponent implements OnInit {
 
     this.characterQuote$ = this.character$.pipe(
       filter(character => !!character?.name),
-      switchMap(character => this.charactersFacadeService.getCharacterQuote(character.name))
+      switchMap(character => this.charactersFacadeService.getCharacterQuote(character.name)),
+      catchError(() => of(''))
     );
   }
 }

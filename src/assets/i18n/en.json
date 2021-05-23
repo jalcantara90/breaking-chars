@@ -8,5 +8,8 @@
   "character.birthday": "Birth day",
   "character.occupation": "Occupation",
   "character.status": "Status",
-  "character.hasNotQuotes": "Has not famous quotes"
+  "character.hasNotQuotes": "Has not famous quotes",
+  "character.load": "The characters list load fail",
+  "character.quote.load": "The character quote load fail",
+  "character.ById.load": "The character load fail"
 }

@@ -11,6 +11,8 @@ import {MatIconModule} from '@angular/material/icon';
 import {MatSelectModule} from '@angular/material/select';
 import {MatToolbarModule} from '@angular/material/toolbar';
 
+import { ToastrModule } from 'ngx-toastr';
+
 import { LayoutComponent } from './layout/layout.component';
 import { HeaderComponent } from './header/header.component';
 import { FooterComponent } from './footer/footer.component';
@@ -47,6 +49,7 @@ export function createTranslateLoader(http: HttpClient) {
         deps: [HttpClient]
       }
     }),
+    ToastrModule.forRoot(),
     StoreModule.forRoot(
       fromState.reducers,
       { metaReducers: fromState.metaReducers }
