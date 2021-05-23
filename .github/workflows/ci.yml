@@ -22,8 +22,6 @@ jobs:
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v2
-    - name: use Breaking chars artifact
-    - uses: actions/download-artifact@main
     - name: npm install, and test
       run: |
         npm install
