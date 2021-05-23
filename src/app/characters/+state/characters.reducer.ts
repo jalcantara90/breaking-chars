@@ -7,12 +7,10 @@ import * as FromAdapter from './characters.adapter';
 export const charactersFeatureKey = 'characters';
 
 export interface CharactersState extends EntityState<Character> {
-  isLoading: boolean;
   loaded: boolean;
 }
 
 export const initialState: CharactersState = FromAdapter.adapter.getInitialState({
-  isLoading: false,
   loaded: false
 });
 
@@ -20,7 +18,6 @@ export const initialState: CharactersState = FromAdapter.adapter.getInitialState
 export const reducer = createReducer(
   initialState,
   on(CharactersActions.loadCharactersSuccess, (state, {characterList}) => FromAdapter.adapter.addMany(characterList, {...state, loaded: true})),
-  on(CharactersActions.loadCharacterById, state => ({...state, isLoading: true})),
-  on(CharactersActions.loadCharacterByIdSuccess, (state, { character }) => FromAdapter.adapter.addOne(character, {...state, isLoading: false})),
+  on(CharactersActions.loadCharacterByIdSuccess, (state, { character }) => FromAdapter.adapter.addOne(character, {...state})),
 );
 

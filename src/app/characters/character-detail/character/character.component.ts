@@ -15,7 +15,6 @@ export class CharacterComponent implements OnInit {
 
   character$!: Observable<Character>;
   characterQuote$!: Observable<string>;
-  isLoading$!: Observable<boolean>;
 
   constructor(private router: ActivatedRoute, private charactersFacadeService: CharactersFacadeService) { }
 
