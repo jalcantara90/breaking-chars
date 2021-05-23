@@ -45,3 +45,17 @@
     transform: rotate(180deg);
   }
 }
+
+@media (max-width: 800px) {
+  .character__info__block {
+    flex-direction: column;
+    align-items: flex-start;
+
+    &:nth-child(1) {
+      div {
+        margin-left: 0 !important;
+      }
+    }
+
+  }
+}

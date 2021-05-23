@@ -44,5 +44,9 @@
 @media (max-width: 800px) {
   .character-grid {
     grid-template-columns: 1fr;
+
+    &__image {
+      width: 85vw;
+    }
   }
 }
