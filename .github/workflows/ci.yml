@@ -1,0 +1,32 @@
+name: Breaking
+
+on:
+  pull_request:
+    branches: [ main ]
+    
+jobs: 
+  build: 
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - name: npm install and build
+        run: |
+          npm install
+          npm run build
+      - uses: actions/upload-artifact/main
+        with:
+          name: breaking chars artifact
+          path: dist/
+    needs: build
+    
+  test:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v2
+    - name: use Breaking chars artifact
+    - uses: actions/download-artifact@main
+    - name: npm install, and test
+      run: |
+        npm install
+        npm run test
+     
