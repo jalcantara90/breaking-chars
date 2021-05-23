@@ -1,0 +1,15 @@
+{
+  "chooseLanguage": "Elige idioma",
+  "author": "Autor",
+  "returnToCharacters": "Volver a personajes",
+  "character.name": "Nombre",
+  "character.image": "Imagen",
+  "character.nickname": "Apodo",
+  "character.birthday": "Fecha de nacimiento",
+  "character.occupation": "Profesión",
+  "character.status": "Estado",
+  "character.hasNotQuotes": "No tiene frases célebres",
+  "character.load": "La carga de listado de personajes falló",
+  "character.quote.load": "La carga de frase célebre falló",
+  "character.ById.load": "La carga del personaje falló"
+}
