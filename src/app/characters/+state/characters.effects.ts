@@ -1,11 +1,13 @@
-import { getCharacterById } from './characters.selectors';
+import { TranslateService } from '@ngx-translate/core';
 import { CharactersService } from '../characters.service';
 import { Injectable } from '@angular/core';
 import { Actions, createEffect, ofType } from '@ngrx/effects';
-import { catchError, map, concatMap } from 'rxjs/operators';
+import { catchError, map, concatMap, tap } from 'rxjs/operators';
+import { ToastrService } from 'ngx-toastr';
 import { of } from 'rxjs';
 
 import * as CharactersActions from './characters.actions';
+import { HttpErrorResponse } from '@angular/common/http';
 
 @Injectable()
 export class CharactersEffects {
@@ -16,7 +18,16 @@ export class CharactersEffects {
       concatMap(() =>
         this.charactersService.getCharacters().pipe(
           map(characterList => CharactersActions.loadCharactersSuccess({ characterList })),
-          catchError(error => of(CharactersActions.loadCharactersFailure({ error })))
+          catchError((error: HttpErrorResponse) =>
+            of(
+              CharactersActions.loadCharactersFailure({
+                error: {
+                  title: 'character.load',
+                  message: error.message
+                }
+              })
+            )
+          )
         )
       )
     );
@@ -28,13 +39,40 @@ export class CharactersEffects {
       concatMap(({id}) =>
         this.charactersService.getCharacterById(id).pipe(
           map(character => CharactersActions.loadCharacterByIdSuccess({ character })),
-          catchError(error => of(CharactersActions.loadCharacterByIdFailure({ error })))
+          catchError((error: HttpErrorResponse) =>
+            of(
+              CharactersActions.loadCharacterByIdFailure({
+                error: {
+                  title: 'character.ById.load',
+                  message: error.message
+                }
+              })
+            )
+          )
         )
       )
     );
   });
 
+  error$ = createEffect(() =>
+    this.actions$.pipe(
+      ofType(
+        CharactersActions.loadCharactersFailure,
+        CharactersActions.loadCharacterByIdFailure
+      ),
+      tap(({error}) =>
+        this.toastr.error(
+          error.message,
+          this.translateService.instant(error.title)
+        )
+      )
+    ), { dispatch: false }
+  );
 
-
-  constructor(private actions$: Actions, private charactersService: CharactersService) {}
+  constructor(
+    private actions$: Actions,
+    private charactersService: CharactersService,
+    private toastr: ToastrService,
+    private translateService: TranslateService
+  ) {}
 }

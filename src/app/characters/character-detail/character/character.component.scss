@@ -6,7 +6,7 @@
   &-grid {
     display: grid;
     grid-template-columns: minmax(300px, 1fr) 1fr;
-    gap: 1rem;
+    gap: 2rem;
 
     &__image {
       width: 100%;

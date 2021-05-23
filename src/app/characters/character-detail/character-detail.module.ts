@@ -1,3 +1,4 @@
+import { MatCardModule } from '@angular/material/card';
 import { TranslateModule } from '@ngx-translate/core';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
@@ -21,7 +22,8 @@ import { CharacterInfoComponent } from './character-info/character-info.componen
     MatButtonModule,
     MatIconModule,
     TranslateModule,
-    MatChipsModule
+    MatChipsModule,
+    MatCardModule
   ]
 })
 export class CharacterDetailModule { }
