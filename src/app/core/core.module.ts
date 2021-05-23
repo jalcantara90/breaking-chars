@@ -23,6 +23,8 @@ import { StoreModule } from '@ngrx/store';
 import { EffectsModule } from '@ngrx/effects';
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 import * as fromState from './root-reducer';
+import { Optional } from '@angular/core';
+import { SkipSelf } from '@angular/core';
 
 export function createTranslateLoader(http: HttpClient) {
   return new TranslateHttpLoader(http, './assets/i18n/', '.json');
@@ -63,4 +65,12 @@ export function createTranslateLoader(http: HttpClient) {
     LayoutComponent
   ]
 })
-export class CoreModule { }
+export class CoreModule {
+  constructor(
+    @Optional() @SkipSelf() parentModule: CoreModule,
+  ) {
+    if (parentModule) {
+      throw new Error('Core Module has already been loaded. Import this module in the AppModule only.');
+    }
+  }
+}
